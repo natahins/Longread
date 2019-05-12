@@ -5,7 +5,7 @@
         <div class="slide__grayback">
             <div class="iconTextBox">
                 <div class="iconTextBox__left">
-                    <img class="iconTextBox__left__img" src="~images/bullet.png">
+                    <div class="iconTextBox__left__bullet"></div>
                     <div class="iconTextBox__left__number">1</div>
                     </div>
                 <div class="iconTextBox__right">
@@ -16,7 +16,7 @@
         <div class="slide__grayback">
             <div class="iconTextBox">
                 <div class="iconTextBox__left">
-                    <img class="iconTextBox__left__img" src="~images/bullet.png">
+                    <div class="iconTextBox__left__bullet"></div>
                     <div class="iconTextBox__left__number">2</div>
                     </div>
                 <div class="iconTextBox__right">
@@ -27,11 +27,11 @@
         <div class="slide__grayback">
             <div class="iconTextBox">
                 <div class="iconTextBox__left">
-                    <img class="iconTextBox__left__img" src="~images/bullet.png">
+                    <div class="iconTextBox__left__bullet"></div>
                     <div class="iconTextBox__left__number">3</div>
                     </div>
                 <div class="iconTextBox__right">
-                <div>Еще 2 полных месяца оплачивает вцбранный<br>пакет услуг та же, по 1 руб./мес</div>
+                <div>Еще 2 полных месяца оплачивает выбранный<br>пакет услуг та же, по 1 руб./мес</div>
                 </div>
             </div>
         </div>
@@ -82,15 +82,17 @@ export default {
         border-radius: 5px;
         &__left {
             padding: 25px;
-            &__img {
-                position: relative;
-                top: 10px;
-            }
             &__number {
                 position: relative;
-                bottom: 18px;
+                bottom: 24px;
                 color: #ffffff;
                 font-weight: 600;
+            }
+            &__bullet {
+                background-color: #00b7bf;
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
             }
         }
         &__right {

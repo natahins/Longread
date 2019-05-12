@@ -7,9 +7,7 @@
             <div class="iconTextBox__right">
                 <div class="strong-text">Куда именно будут поступать информирования</div>
                 <ul>
-                        <li class="green-li">СМС - на телефон</li>
-                        <li class="green-li">Push-уведомления - на телефон</li>
-                        <li class="green-li">Письма - на e-mail</li>
+                        <li v-for="(item, index) in greenList" :key="index" class="green-li">{{ item }}</li>
                     </ul>
             </div>
           </div>
@@ -31,7 +29,16 @@
 </template>
 <script>
 export default {
-  name: 'slide5'
+  name: 'slide5',
+  data () {
+    return {
+      greenList: [
+        'СМС - на телефон',
+        'Push-уведомления - на телефон',
+        'Письма - на e-mail'
+      ]
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
