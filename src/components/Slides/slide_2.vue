@@ -5,13 +5,13 @@
         </p>
         <div class="slide__buttons">
             <div
-                :class="['white-button', activeCard === 'businessOnline' ? 'active' : '' ]"
-                v-on:click="activeCard = 'businessOnline'"
+                :class="['white-button', activeCard === 0 ? 'active' : '' ]"
+                v-on:click="setActiveCard(0)"
              >
              «Сбербанк Бизнес Онлайн»</div>
             <div
-                :class="['white-button', activeCard === 'invoicing' ? 'active' : '' ]"
-                v-on:click="activeCard = 'invoicing'"
+                :class="['white-button', activeCard === 1 ? 'active' : '' ]"
+                v-on:click="setActiveCard(1)"
              >
              E-invoicing</div>
             <div
@@ -101,8 +101,36 @@ export default {
   name: 'slide2',
   data () {
     return {
-      activeCard: 'businessOnline'
+      currentElem: 0,
+      activeCard: 'businessOnline',
+      allCards: [
+        {
+          name: 'businessOnline',
+          title: '«Сбербанк Бизнес Онлайн»',
+          opisanie: 'Интернет-банк, дает возможность управления<br>продуктами Банка без посещения офиса</div>',
+          komu: 'Всем клиентам, кто ценит время и мобильность.',
+          stoimost: 'Бесплатно.',
+          img: '~images/business-online.png'
+        }, {
+          name: 'invoicing',
+          title: 'E-invoicing',
+          opisanie: 'Комплекс услуг по электронному документообороту:<br>электронная отчетность и т. п. Обмен документами<br>с Банком, налоговой инспекцией, контрагентами',
+          komu: 'Клиентам, которые пользуются НДС-услугами и получают от Банка счета-фактуры (они отправляются только по e-invoicing)',
+          stoimost: 'Бесплатно.<br>Есть платные опции.',
+          img: '~images/einvoicing.png'
+        }
+      ]
     }
+  },
+  methods: {
+      setActiveCard(val) {
+         this.currentElem = val
+         activeCard = this.allCards[this.currentElem].name
+      }
+  },
+  mounted () {
+    // console.log(this.activeCard)
+    console.log(this.allCards[this.currentElem].name)
   }
 }
 </script>
