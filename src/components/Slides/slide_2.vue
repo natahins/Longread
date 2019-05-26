@@ -15,83 +15,28 @@
              >
              E-invoicing</div>
             <div
-            :class="['white-button', activeCard === 'info' ? 'active' : '' ]"
-            v-on:click="activeCard = 'info'"
+            :class="['white-button', activeCard === 2 ? 'active' : '' ]"
+            v-on:click="setActiveCard(2)"
             >Информирование</div>
             <div
-            :class="['white-button', activeCard === 'samoinkassacia' ? 'active' : '' ]"
-            v-on:click="activeCard = 'samoinkassacia'"
+            :class="['white-button', activeCard === 3 ? 'active' : '' ]"
+            v-on:click="setActiveCard(3)"
             >Самоинкассация</div>
             <div
-            :class="['white-button', activeCard === 'businesscard' ? 'active' : '' ]"
-            v-on:click="activeCard = 'businesscard'"
+            :class="['white-button', activeCard === 4 ? 'active' : '' ]"
+            v-on:click="setActiveCard(4)"
             >Бизнес-карта</div>
         </div>
-        <div v-if="activeCard === 'businessOnline'" class="pictureTextBox">
-            <div class="pictureTextBox__left pictureTextBox__left--businessOnline"></div>
+            <div class="pictureTextBox">
+            <div :class="'pictureTextBox__left pictureTextBox__left--' + this.allCards[this.currentElem].name"></div>
             <div class="pictureTextBox__right">
-                <div class="big-text">«Сбербанк Бизнес Онлайн»</div>
+                <div class="big-text"> {{ this.allCards[this.currentElem].title }}</div>
                 <div class="strong-text">Описание</div>
-                <div class="text">Интернет-банк, дает возможность управления<br>продуктами Банка без посещения офиса</div>
+                <div class="text"><div v-html="this.allCards[this.currentElem].opisanie">{{ this.allCards[this.currentElem].opisanie }}</div></div>
                 <div class="strong-text">Кому пригодится</div>
-                <div class="text">Всем клиентам, кто ценит время и мобильность.</div>
+                <div class="text"><div v-html="this.allCards[this.currentElem].komu">{{ this.allCards[this.currentElem].komu }}</div></div>
                 <div class="strong-text">Стоимость при подключении с РКО</div>
-                <div class="text">Бесплатно.</div>
-            </div>
-        </div>
-        <div v-if="activeCard === 'invoicing'" class="pictureTextBox">
-            <div class="pictureTextBox__left pictureTextBox__left--big pictureTextBox__left--invoicing"></div>
-            <div class="pictureTextBox__right">
-                <div class="big-text">E-invoicing</div>
-                <div class="strong-text">Описание</div>
-                <div class="text">Комплекс услуг по электронному документообороту:<br>электронная отчетность и т. п. Обмен документами<br>с Банком, налоговой инспекцией, контрагентами</div>
-                <div class="strong-text">Кому пригодится</div>
-                <div class="text">Клиентам, которые пользуются НДС-услугами и получают от Банка счета-фактуры (они отправляются только по e-invoicing</div>
-                <div class="strong-text">Стоимость при подключении с РКО</div>
-                <div class="text">Бесплатно.<br>Есть платные опции</div>
-            </div>
-        </div>
-          <div v-if="activeCard === 'info'" class="pictureTextBox">
-            <div class="pictureTextBox__left pictureTextBox__left pictureTextBox__left--info"></div>
-            <div class="pictureTextBox__right">
-                <div class="big-text">Информирование об операциях</div>
-                <div class="strong-text">Описание</div>
-                <div class="text">Услуга, при которой Клиент получает информацию<br>о поступлении и/или списании денежных средст<br>с расчетного счета в виде:<br>
-                    <ul>
-                        <li class="green-li">СМС на мобильный телефон</li>
-                        <li class="green-li">Push-уведомлений на мобильный телефон</li>
-                        <li class="green-li">Уведомлений на e-mail</li>
-                    </ul>
-                </div>
-                <div class="strong-text">Кому пригодится</div>
-                <div class="text">
-                    Клиентам, которым важен постоянный контроль сумм<br>на счетах</div>
-                <div class="strong-text">Стоимость при подключении с РКО</div>
-                <div class="text">Согласно тарифам ТБ. В некоторых пакетах<br>предоставляется бесплатно</div>
-            </div>
-        </div>
-        <div v-if="activeCard === 'samoinkassacia'" class="pictureTextBox">
-            <div class="pictureTextBox__left pictureTextBox__left--samoinkassacia"></div>
-            <div class="pictureTextBox__right">
-                <div class="big-text">Самоинкассация</div>
-                <div class="strong-text">Описание</div>
-                <div class="text">Это самостоятельное внесение денежных средств на<br>расчетный счет через устройства самообслуживания<br>Сбербанка</div>
-                <div class="strong-text">Кому пригодится</div>
-                <div class="text">Клиентам, которым удобнее самостоятельно класть<br>выручку на счет без очередей и в любое время</div>
-                <div class="strong-text">Стоимость при подключении с РКО</div>
-                <div class="text">Подключение бесплатно. Клиент платит, только если<br>пользуется услугой</div>
-            </div>
-        </div>
-        <div v-if="activeCard === 'businesscard'" class="pictureTextBox">
-            <div class="pictureTextBox__left pictureTextBox__left--businesscard"></div>
-            <div class="pictureTextBox__right">
-                <div class="big-text">Бизнес-карта</div>
-                <div class="strong-text">Описание</div>
-                <div class="text">Это банковская карта, открывающая Клиенту<br>круглосуточный доступ к средствам на расчетном<br>счете организации</div>
-                <div class="strong-text">Кому пригодится</div>
-                <div class="text">Клиентам, которым приходится часто оплачивать<br>расходы компании. И тем, кто часто совершает<br>командировки</div>
-                <div class="strong-text">Стоимость при подключении с РКО</div>
-                <div class="text">Согласно тарифам ТБ. В некоторых пакетах<br>предоставляется бесплатно</div>
+                <div class="text"><div v-html="this.allCards[this.currentElem].stoimost">{{ this.allCards[this.currentElem].stoimost }}</div></div>
             </div>
         </div>
     </div>
@@ -109,27 +54,41 @@ export default {
           title: '«Сбербанк Бизнес Онлайн»',
           opisanie: 'Интернет-банк, дает возможность управления<br>продуктами Банка без посещения офиса</div>',
           komu: 'Всем клиентам, кто ценит время и мобильность.',
-          stoimost: 'Бесплатно.',
-          img: '~images/business-online.png'
+          stoimost: 'Бесплатно.'
         }, {
           name: 'invoicing',
           title: 'E-invoicing',
           opisanie: 'Комплекс услуг по электронному документообороту:<br>электронная отчетность и т. п. Обмен документами<br>с Банком, налоговой инспекцией, контрагентами',
           komu: 'Клиентам, которые пользуются НДС-услугами и получают от Банка счета-фактуры (они отправляются только по e-invoicing)',
-          stoimost: 'Бесплатно.<br>Есть платные опции.',
-          img: '~images/einvoicing.png'
+          stoimost: 'Бесплатно.<br>Есть платные опции.'
+        }, {
+          name: 'info',
+          title: 'Информирование об операциях',
+          opisanie: 'Услуга, при которой Клиент получает информацию<br>о поступлении и/или списании денежных средст<br>с расчетного счета в виде:<br><ul><li class="green-li">СМС на мобильный телефон</li><li class="green-li">Push-уведомлений на мобильный телефон</li><li class="green-li">Уведомлений на e-mail</li></ul>',
+          komu: 'Клиентам, которым важен постоянный контроль сумм<br>на счетах',
+          stoimost: 'Согласно тарифам ТБ. В некоторых пакетах<br>предоставляется бесплатно.'
+        }, {
+          name: 'samoinkassacia',
+          title: 'Самоинкассация',
+          opisanie: 'Это самостоятельное внесение денежных средств на<br>расчетный счет через устройства самообслуживания<br>Сбербанка',
+          komu: 'Клиентам, которым удобнее самостоятельно класть<br>выручку на счет без очередей и в любое время'
+        }, {
+          name: 'businesscard',
+          title: 'Бизнес-карта',
+          opisanie: 'Это банковская карта, открывающая Клиенту<br>круглосуточный доступ к средствам на расчетном<br>счете организации',
+          komu: 'Клиентам, которым приходится часто оплачивать<br>расходы компании. И тем, кто часто совершает<br>командировки',
+          stoimost: 'Согласно тарифам ТБ. В некоторых пакетах<br>предоставляется бесплатно'
         }
       ]
     }
   },
   methods: {
-      setActiveCard(val) {
-         this.currentElem = val
-         activeCard = this.allCards[this.currentElem].name
-      }
+    setActiveCard (val) {
+      this.currentElem = val
+      this.activeCard = this.allCards[this.currentElem].name
+    }
   },
   mounted () {
-    // console.log(this.activeCard)
     console.log(this.allCards[this.currentElem].name)
   }
 }
